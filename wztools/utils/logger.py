@@ -16,7 +16,7 @@ def get_logger(name=None, log_file=None, add_console=True, level=logging.INFO):
         # 控制台 Rich 日志
         console_handler = RichHandler(rich_tracebacks=True)
         console_formatter = logging.Formatter(
-            "%(message)s        [%(name)s - %(asctime)s]",
+            "[%(name)s - %(asctime)s]   %(message)s ",
             datefmt="%Y-%m-%d %H:%M:%S"
         )
         console_handler.setFormatter(console_formatter)
