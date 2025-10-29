@@ -1,6 +1,6 @@
 [project]
 name = "wztools"
-version = "0.2.2"
+version = "0.2.3"
 description = "个人用工具库"
 readme = "README.md"
 requires-python = ">=3.11"
