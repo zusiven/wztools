@@ -9,11 +9,12 @@ def generate_data_path(
         root_dir: Path,
         dataset_name: str,
         special_key: str,
-        time_key: dt.datetime
+        time_key: dt.datetime,
+        suffix: str="parquet"
 ):
     """
-    根据时间点和数据集名称，生成 Parquet 文件的标准存储路径 (包含文件名)。
-    结构: ./root_dir/dataset_name/Y/M/D/YYYYMMDD_HH_[special_key].parquet
+    根据时间点和数据集名称，生成 [suffix] 文件的标准存储路径 (包含文件名)。
+    结构: ./root_dir/dataset_name/Y/M/D/YYYYMMDD_HH_[special_key].[suffix]
     Args:
         - root_dir (pathlib.Path): 数据池的根目录。
         - dataset_name (str): 数据集的名称 (e.g., 'ERA5_Hourly')。
@@ -30,7 +31,7 @@ def generate_data_path(
     # 构建文件名
     time_part = time_key.strftime("%Y%m%d_%H")
     file_stem = f"{time_part}_{special_key}"
-    file_name = f"{file_stem}.parquet"
+    file_name = f"{file_stem}.{suffix}"
 
     return partition_path / file_name
 
@@ -39,10 +40,11 @@ def get_data_paths(
         dataset_name: str,
         special_key: str,
         start_time: dt.datetime,
-        end_time: dt.datetime
+        end_time: dt.datetime,
+        suffix: str="parquet"
 ):
     """
-    通过精准的时间分区索引，快速获取时间范围内的 Parquet 文件路径列表。
+    通过精准的时间分区索引，快速获取时间范围内的 suffix 文件路径列表。
     Args:
         - root_dir (pathlib.Path): 数据池的根目录。
         - dataset_name (str): 数据集的名称 (e.g., 'ERA5_Hourly')。
@@ -67,7 +69,7 @@ def get_data_paths(
                             f"{current_time.year}" / \
                             f"{current_time.month:02d}" / \
                             f"{current_time.day:02d}" / \
-                            f"{current_time.strftime('%Y%m%d_%H')}_{special_key}.parquet"
+                            f"{current_time.strftime('%Y%m%d_%H')}_{special_key}.{suffix}"
             if partition_path.exists():
                 file_paths.append(partition_path)
         processed_time_points.add(current_time)
