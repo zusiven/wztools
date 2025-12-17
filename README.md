@@ -26,3 +26,6 @@ uv run twine upload dist/*
 
 ## [v2025.12.03]
 - 🧹  把固定的 parquet 后缀改成通用后缀
+
+## [v2025.12.17]
+- 🐛 datalake get_data_paths fix

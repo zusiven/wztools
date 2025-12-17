@@ -66,6 +66,7 @@ def get_data_paths(
         # 步骤 2: 仅处理尚未处理的日期
         if current_time not in processed_time_points:
             partition_path = root_dir / \
+                            dataset_name / \
                             f"{current_time.year}" / \
                             f"{current_time.month:02d}" / \
                             f"{current_time.day:02d}" / \
