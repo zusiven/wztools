@@ -34,5 +34,13 @@ def get_logger(name=None, log_file=None, add_console=True, level=logging.INFO):
 
     return logger
 
+def get_loguru(log_file=None, rotation= "1 MB", retention=3):
+    from loguru import logger
+
+    if log_file is not None:
+        logger.add(log_file, rotation=rotation, retention=retention, enqueue=True,
+                format="{time:YYYY-MM-DD HH:mm:ss} - {name} - {level} - {message}")
+
+    return logger
 
 logger = get_logger()
