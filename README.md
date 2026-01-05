@@ -18,3 +18,7 @@
 
 ## [v2025.12.23]
 - 🧹 优化 error_line()
+
+## [v2026-01-05]
+- ✨ 添加 fetch_nearest_point
+- ✨ 添加 set_datetime_double_xaxis
