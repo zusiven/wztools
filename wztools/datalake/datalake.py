@@ -1,3 +1,4 @@
+import warnings
 import datetime as dt
 
 from pathlib import Path
@@ -77,5 +78,5 @@ def get_data_paths(
         current_time += delta_hour
 
     if len(file_paths) == 0:
-        raise ValueError("not file in paths")
+        warnings.warn(f"No {suffix} files found in [{start_time}, {end_time}]", UserWarning)
     return file_paths
