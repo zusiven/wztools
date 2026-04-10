@@ -29,3 +29,6 @@
 ## [v2026-01-06]
 - ✨ 添加 run_cmd
 - 🧹 修改 logger, 添加 loguru 基础配置，便于简单轮询
+
+## [v2026.04.10]
+- 🐛 datalake warning 信息不明确

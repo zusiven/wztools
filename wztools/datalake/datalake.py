@@ -73,7 +73,7 @@ def get_data_paths(
         current_time += delta_time
 
     if len(file_paths) == 0:
-        warnings.warn(f"No {suffix} files found in [{start_time}, {end_time}]", UserWarning)
+        warnings.warn(f"No {special_key} files found in [{start_time}, {end_time}]", UserWarning)
 
     return file_paths
 
