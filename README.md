@@ -1,34 +1,34 @@
+# wztools
 
+个人用 Python 工具库
 
+## 模块
 
-## 2025
-- [v0.2.3] 
-    - 2025-10-29
-    - ✨ 添加 load_toml
-    - 修改 readme.md 格式
-    
+- **utils** - 通用工具函数
+  - `run_cmd` - 执行命令行命令并实时返回结果
+  - `logger` / `get_logger` - 日志配置（Rich 终端输出）
+  - `get_loguru` - loguru 日志（按需使用，需额外安装 loguru）
+  - `load_toml` - 读取 TOML 配置文件
+  - `error_info` - 错误信息提取
+  - `measure_time` / `format_time` - 时间相关工具
+  - `set_datetime_double_xaxis` - matplotlib 双 x 轴时间格式
+  - `fetch_nearest_point` - 空间最近点查询
+
+- **datalake** - 本地数据存储管理
+  - 按时间组织数据文件
+  - 支持日、月、年维度创建和获取数据
+
+## 变更记录
+
+- [v2026.04.28]
+  - command.py stdout 日志级别改为 warning
+  - 添加 command.py 测试
+
+- [v2026.04.10]
+  - datalake warning 信息优化
+
 - [v2025.12.01]
-    - ✨ 增加 datalake 
-        - 本地简单数据库
-        - 方便统一新文件名
-        - 创建新文件，获取对应时间的文件
+  - 增加 datalake 模块
 
-- [v2025.12.03]
-    - 🧹  把固定的 parquet 后缀改成通用后缀
-
-- [v2025.12.17]
-    - 🐛 datalake get_data_paths fix
-
-- [v2025.12.23]
-    - 🧹 优化 error_line()
-
-## [v2026-01-05]
-- ✨ 添加 fetch_nearest_point
-- ✨ 添加 set_datetime_double_xaxis
-
-## [v2026-01-06]
-- ✨ 添加 run_cmd
-- 🧹 修改 logger, 添加 loguru 基础配置，便于简单轮询
-
-## [v2026.04.10]
-- 🐛 datalake warning 信息不明确
+- [v2025.10.29]
+  - 添加 load_toml

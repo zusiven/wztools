@@ -51,7 +51,7 @@ def run_cmd(
         stderr_lines = []
         stopped_by_keyword = None
         
-        def read_stream(stream, lines, is_stderr=False):
+        def read_stream(stream, lines):
             """实时读取流并记录到logger"""
             nonlocal stopped_by_keyword
             try:
@@ -66,10 +66,7 @@ def run_cmd(
                     lines.append(line)
                     
                     # 实时记录到logger
-                    if is_stderr:
-                        logger.warning(line_stripped)
-                    else:
-                        logger.info(line_stripped)
+                    logger.warning(line_stripped)
                     
                     # 检查关键词
                     if stop_keywords:
@@ -86,12 +83,12 @@ def run_cmd(
         # 创建线程读取stdout和stderr
         stdout_thread = threading.Thread(
             target=read_stream, 
-            args=(process.stdout, stdout_lines, False),
+            args=(process.stdout, stdout_lines),
             daemon=True
         )
         stderr_thread = threading.Thread(
             target=read_stream, 
-            args=(process.stderr, stderr_lines, True),
+            args=(process.stderr, stderr_lines),
             daemon=True
         )
         
